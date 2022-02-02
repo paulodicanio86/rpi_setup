@@ -107,6 +107,10 @@ lxpanel --profile LXDE-pi
 @slide -t 15 -o 200 -p /home/pi/photo-manager/screensaver/photos/
 ```
 The option `-t 15` determines how frequent the slideshow changes photos in seconds.
+### Error fix Kernel panic
+When running this on a RPi WH I got some Kernel Panic, due to network traffic, causing the RPi to crash. 
+[This](https://raspberrypi.stackexchange.com/a/130836) seems to have fixed it. 
+
 
 ## PiHole
 Some PiHole commands. More detail to be added
