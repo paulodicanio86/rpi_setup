@@ -62,6 +62,20 @@ sudo apt update && sudo apt upgrade && sudo apt clean && sudo reboot
 sudo apt install emacs
 sudo apt install python3-pip
 ```
+## Passwordless Rsync into Synology
+Only works if the RPi is in the same LAN as the Synology. Some preparation on the Synology is required before the below
+works, see [here](https://github.com/paulodicanio86/backup_scripts#passwordless-rsync).
+
+- on Synology: add 'user' to administrator group 
+- on Synology: enable ssh
+- on RPi: Generate SSH keys `ssh-keygen -t rsa` (Press 'Enter' to all prompts)
+- on RPi: `ssh-copy-id [user]@[synology_ip]`
+- on Synology: disable ssh on Synology
+- on Synology: remove 'user' from administrator group
+
+Now you can rsync from the RPi to the Synology without entering the password. This also works if the RPi is not in the
+same LAN but the Synology can be reached via a DNS service or similar. 
+
 
 ## NautiluX Screensaver
 Required for using the RPi as a [screensaver](https://github.com/paulodicanio86/photo-manager/tree/master/screensaver). 
