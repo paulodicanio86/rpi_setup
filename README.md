@@ -75,6 +75,7 @@ Then, download and unpack a stable release (in this case v0.9.13):
 wget https://github.com/NautiluX/slide/releases/download/v0.9.13/slide_pi_0.9.13.tar.gz
 tar xf slide_pi_0.9.13.tar.gz
 sudo mv slide_0.9.13/slide /usr/local/bin/
+rm slide_pi_0.9.13.tar.gz
 ```
 
 To run the slide app automatically at boot up edit this file:
