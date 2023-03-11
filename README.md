@@ -6,6 +6,8 @@ Collection of Raspberry Pi commands and instructions that I use frequently.
 ### SSH and WiFi
 With a fresh SD card do the following:
 - Create an empty `ssh` file in the boot directory to enable headless mode with ssh activated
+- Create a `userconf.txt` file in the boot directory, containing **username:encrypted-password**
+   - You can create an encrypted password in a terminal with `echo 'mypassword' | openssl passwd -stdin` 
 - Create a `wpa_supplicant.conf` file in the boot directory with following content:
 ```
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
@@ -81,7 +83,7 @@ same LAN but the Synology can be reached via a DNS service or similar.
 Required for using the RPi as a [screensaver](https://github.com/paulodicanio86/photo-manager/tree/master/screensaver). 
 Install the dependencies:
 ```
-sudo apt install libexif12 qt5-default
+sudo apt install libexif12 qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
 ```
 Then download and unpack a stable release (in this case v0.9.13):
 ```
@@ -107,10 +109,16 @@ lxpanel --profile LXDE-pi
 @slide -t 15 -o 200 -p /home/pi/photo-manager/screensaver/photos/
 ```
 The option `-t 15` determines how frequent the slideshow changes photos in seconds.
-### Error fix Kernel panic
-When running this on a RPi WH I got some Kernel Panic, due to network traffic, causing the RPi to crash. 
-[This](https://raspberrypi.stackexchange.com/a/130836) seems to have fixed it. 
 
+### Error fix Kernel panic
+When running this on a RPi Zero I experienced some Kernel panic, which caused the RPi to crash. 
+[This](https://forums.raspberrypi.com/viewtopic.php?p=1611724#p1611724) seems to have fixed it by adding the following
+to the `/boot/config.txt` file:
+
+```
+over_voltage=6
+force_turbo=1
+```
 
 ## PiHole
 Some PiHole commands. More detail to be added
